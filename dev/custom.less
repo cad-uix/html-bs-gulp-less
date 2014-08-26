@@ -1,0 +1,72 @@
+.carousel-fade {
+  .carousel-inner {
+    .item {
+      opacity: 0;
+      transition-property: opacity;
+    }
+
+    .active {
+      opacity: 1;
+    }
+
+    .active.left,
+    .active.right {
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+  }
+
+  .carousel-control {
+    z-index: 2;
+  }
+}
+.title-box {
+  background-color: @brand-primary;
+  margin-top: 0;
+  color: white;
+  padding: 1rem;
+}
+
+h2.diagonal {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+    
+    &:before {
+        content:"";
+        position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+        top: 5px; left: 0; right: 0; bottom: 5px;
+        width: 100%;
+          z-index: -1;
+
+          /** To edit this background, follow this link:
+http://svgeneration.com/generate/Diagonal-Stripes?scale=5&stripe=E8B900&stripe-width=1&background=ffffff&
+*/
+background-color: #ffffff;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzEwJyB2aWV3Qm94PScwIDAgNSAxMCc+Cgk8cmVjdCB3aWR0aD0nMTEwJScgeD0nLTUlJyB5PSctNSUnIGhlaWdodD0nMTEwJScgZmlsbD0nI2ZmZmZmZicvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nMScgeDI9JzcnIHkyPScxMCcgc3Ryb2tlPScjRThCOTAwJyBzdHJva2Utd2lkdGg9JzEnLz4KCTxsaW5lIHgxPSctMicgeTE9JzYnIHgyPSc3JyB5Mj0nMTUnIHN0cm9rZT0nI0U4QjkwMCcgc3Ryb2tlLXdpZHRoPScxJy8+Cgk8bGluZSB4MT0nLTInIHkxPSctNCcgeDI9JzcnIHkyPSc1JyBzdHJva2U9JyNFOEI5MDAnIHN0cm9rZS13aWR0aD0nMScvPgo8L3N2Zz4=');
+
+
+    }
+    span { 
+        /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+        background: #fff; 
+        padding-right: 15px; 
+    }
+    &.text-center {
+      span { 
+          /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+          background: #fff; 
+          padding: 0 15px; 
+      }  
+    }
+    
+}
+
+#customadesign {
+  text-align: right;
+}
