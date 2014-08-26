@@ -16,14 +16,14 @@
 	
 	project
 	└ dev
-			└ less
-			└ js
+		└ less
+		└ js
 	└ dist
-			└ css
-			└ img
-			└ js
-				└ vendor
-			└ {page files}
+		└ css
+		└ img
+		└ js
+			└ vendor
+		└ {page files}
 	└ gulpfile.js
 	└ package.json
 

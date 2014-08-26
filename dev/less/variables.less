@@ -2,6 +2,17 @@
 // Variables
 // --------------------------------------------------
 
+//
+// FONT AWESOME IMPORT
+// ## font icons, glyphs to user for project, no need to declare on header tag
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
+//
+// GOOGLE FONT IMPORT
+// ## font imported from google fonts, no need to declare on header tags
+
+@import url('http://fonts.googleapis.com/css?family=Lato:300,400,700');
 
 //== Colors
 //
@@ -13,11 +24,11 @@
 @gray-light:             lighten(#000, 46.7%); // #777
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #E8B900;//#C6852A;//#428bca;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+@brand-primary:         #428bca;       // change this to base color of theme
+@brand-success:         #5cb85c;        // normally green
+@brand-info:            #5bc0de;		// normally blue
+@brand-warning:         #f0ad4e;		// normally orange
+@brand-danger:          #d9534f;		// normally red
 
 
 //== Scaffolding
@@ -34,13 +45,12 @@
 //** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
 
-//@import url('http://fonts.googleapis.com/css?family=Lato:300,400,700');
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "proxima-nova", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Lato", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;

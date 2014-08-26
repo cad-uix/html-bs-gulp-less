@@ -5,7 +5,6 @@ var plumber   = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 
-// Static server
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
@@ -14,23 +13,23 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// // or...
-
-// gulp.task('browser-sync', function() {
-//     browserSync({
-//         proxy: "yourlocal.dev"
-//     });
-// });
-
-
 // Reload all Browsers
 gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
+gulp.task('script', function () {
+  gulp.src(['./dev/js/*.js'])
+    .pipe(concat('theme.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(reload({stream:true}));
+});
 
 gulp.task('less', function () {
-  gulp.src(['./dev/theme.less', './dev/bootstrap.less'])
+  gulp.src([
+    './dev/less/theme.less', 
+    './dev/less/bootstrap.less'
+    ])
     .pipe(plumber())
     .pipe(less())
     .pipe(csscomb())
