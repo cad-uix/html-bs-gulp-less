@@ -1,7 +1,11 @@
-var gulp      = require('gulp');
-var less      = require('gulp-less');
-var csscomb   = require('gulp-csscomb');
-var plumber   = require('gulp-plumber');
+var gulp        = require('gulp');
+
+var concat      = require('gulp-concat');
+var uglify      = require('gulp-uglify');
+
+var less        = require('gulp-less');
+var csscomb     = require('gulp-csscomb');
+var plumber     = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 
@@ -39,7 +43,7 @@ gulp.task('less', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./dist/*.html'], ['bs-reload']);
-  gulp.watch(['./dev/*.less'], ['less']);
+  gulp.watch(['./dev/less/**/*.less'], ['less']);
 });
 
-gulp.task('default', ['browser-sync', 'less', 'watch']);
+gulp.task('default', ['browser-sync', 'less', 'watch', 'script']);
