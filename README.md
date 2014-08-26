@@ -13,18 +13,18 @@ TODO: html template used by cad-uix using bootstrap, less, gulp
 
 ## Folder Structure
 	
-'project
-└ dev
-	└ less
+	project
+	└ dev
+		└ less
 		└ js
 	└ dist
 		└ css
 		└ img
 		└ js
 			└ vendor
-			└ {page files}
+		└ {page files}
 	└ gulpfile.js
-	└ package.json'
+	└ package.json
 
 ## License
 
