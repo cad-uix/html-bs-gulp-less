@@ -1,7 +1,5 @@
 
-<snippet>
-  <content><![CDATA[
-	# ${1:HTML base template for cad-uix}
+	# HTML base template for cad-uix
 	TODO: html template used by cad-uix using bootstrap, less, gulp
 
 	## USAGE and Instructions
@@ -15,6 +13,7 @@
 	7. write styles using LESS found at 'dist/less' folder. Task runner automatically compliles LESS filess to CSS given that gulp is running in the background.
 	
 	## Folder Structure
+	
 	project
 	└ dev
 			└ less
@@ -31,7 +30,3 @@
 	## License
 
 	TODO: Exclusively used by CAD and Linkgae UIX Design Team
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
