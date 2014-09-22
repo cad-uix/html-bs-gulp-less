@@ -5,11 +5,13 @@ HTML template used by cad-uix using bootstrap, less, gulp
 
 1. download and extract to your project folder.
 2. open terminal and go to project folder.
-3. type and run 'npm install' to install node dependencies.
-4. after succesful install, type and run 'gulp' to start gulp task.
-5. edit pages found at 'dist' folder.
-6. save image assets at  'dist/img' folder.
-7. write styles using LESS found at 'dist/less' folder. Task runner automatically compliles LESS filess to CSS given that gulp is running in the background.
+3. Install node dependencies, type and run 
+	'npm install' 
+4. To start gulp task, type and run 
+	'gulp' 
+5. HTML files are at the 'dist' folder.
+6. Save image assets at  'dist/img' folder.
+7. write styles using LESS found at 'dist/less' folder.
 
 ## Folder Structure
 
