@@ -1,3 +1,8 @@
+// <div id="slide-menu"></div>
+// <button type="button" class="slide-menu-toggle" data-direction="right" data-target="#slide-menu">
+//   <i class="fa fa-reorder"></i>
+// </button>
+
 (function($){
 
   $.fn.slideMenu = function() {
@@ -14,7 +19,7 @@
     	$(body).toggleClass('move');
     	return false;
 	});
-  }
+  };
 })(jQuery);
 
 $('.slide-menu-toggle').slideMenu();

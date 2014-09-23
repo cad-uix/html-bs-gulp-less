@@ -2,6 +2,7 @@ var gulp            = require('gulp');
 
 var concat          = require('gulp-concat');
 var uglify          = require('gulp-uglify');
+var jshint          = require('gulp-jshint');
 
 var less            = require('gulp-less');
 var csscomb         = require('gulp-csscomb');
@@ -11,6 +12,7 @@ var notify          = require('gulp-notify');
 var browserSync     = require('browser-sync');
 var reload          = browserSync.reload;
 
+var html2wp     = require('html2wp');
 
 var   styleSource   = './dev/less',
       styleDist     = './dist/css';
@@ -38,6 +40,8 @@ gulp.task('style', function () {
 
 gulp.task('script', function () {
   gulp.src(['./dev/js/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
     .pipe(concat('theme.js'))
     .pipe(gulp.dest('./dist/js'));
 });
@@ -53,7 +57,6 @@ gulp.task('bootstrap-script', function () {
 gulp.task('watch', function () {
   gulp.watch([styleSource + '/**/*.less'], ['style']);
   gulp.watch(['./dev/js/**/*.js'], ['script']);
-  gulp.watch(['./dev/js/bootstrap-script/**/*.js'], ['bootstrap-script']);
 });
 
 gulp.task('browser-sync', function () {
@@ -78,3 +81,8 @@ gulp.task('default', [
   'script', 
   'bootstrap-script'
 ]);
+
+
+gulp.task('hello', function () {
+ html2wp();
+});

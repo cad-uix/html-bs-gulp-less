@@ -1,11 +1,9 @@
 $.fn.eqHeights = function(options) {
-
     var defaults = {
         child: false,
         parentSelector: null
     };
-    var options = $.extend(defaults, options);
-
+    var opt = $.extend(defaults, options);
     var el = $(this);
     if (el.length > 0 && !el.data('eqHeights')) {
         $(window).bind('resize.eqHeights', function() {
@@ -13,11 +11,12 @@ $.fn.eqHeights = function(options) {
         });
         el.data('eqHeights', true);
     }
+    var elmtns = '';
 
-    if (options.child && options.child.length > 0) {
-        var elmtns = $(options.child, this);
+    if (opt.child && opt.child.length > 0) {
+        elmtns = $(opt.child, this);
     } else {
-        var elmtns = $(this).children();
+        elmtns = $(this).children();
     }
 
     var prevTop = 0;
@@ -26,12 +25,12 @@ $.fn.eqHeights = function(options) {
     var parentEl;
     elmtns.height('auto').each(function() {
 
-        if (options.parentSelector && parentEl !== $(this).parents(options.parentSelector).get(0)) {
+        if (opt.parentSelector && parentEl !== $(this).parents(opt.parentSelector).get(0)) {
             $(elements).height(max_height);
             max_height = 0;
             prevTop = 0;
             elements = [];
-            parentEl = $(this).parents(options.parentSelector).get(0);
+            parentEl = $(this).parents(opt.parentSelector).get(0);
         }
 
         var thisTop = this.offsetTop;
