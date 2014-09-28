@@ -83,6 +83,6 @@ gulp.task('default', [
 ]);
 
 
-gulp.task('hello', function () {
+gulp.task('build', function () {
  html2wp();
 });
