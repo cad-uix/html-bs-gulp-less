@@ -12,8 +12,6 @@ var notify          = require('gulp-notify');
 var browserSync     = require('browser-sync');
 var reload          = browserSync.reload;
 
-var html2wp     = require('html2wp');
-
 var   styleSource   = './dev/less',
       styleDist     = './dist/css';
 
@@ -81,8 +79,3 @@ gulp.task('default', [
   'script', 
   'bootstrap-script'
 ]);
-
-
-gulp.task('build', function () {
- html2wp();
-});
