@@ -2,7 +2,7 @@
 
 //  IMPORTANT IMPORTS DONT' DELETE 
 @import "variables.less";
-@import "bootstrap-less/mixins.less";
+@import "../../bower_components/bootstrap/less/mixins.less";
 
 // STRUCTURE
 //	save and edit all varables found at variables.less
@@ -11,15 +11,26 @@
 //  		}
 //		}
 
-header {
-	.logo {
-		padding: 1rem;
-	}
+.masthead {
+	margin-bottom: @padding-base-vertical * 4;
 	.nav {
+		background-color: @brand-primary;
 		> li {
 			> a {
-				color: white;
+				color: @gray-lighter;
 			}
 		}
 	}
+}
+#banner-wrap {
+
+}
+#content-wrap {
+
+}
+#footer {
+	
+}
+#colophon {
+	background-color: @brand-primary;
 }

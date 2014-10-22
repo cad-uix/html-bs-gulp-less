@@ -1,0 +1,14 @@
+{
+  "name": "html-bs-gulp-less",
+  "version": "1",
+  "homepage": "https://github.com/cad-uix/html-bs-gulp-less",
+  "authors": [
+    "marcelbadua <bitterdash@gmail.com>"
+  ],
+  "description": "bower for html",
+  "main": "dist/index.html",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}

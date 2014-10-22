@@ -44,13 +44,6 @@ gulp.task('script', function () {
     .pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('bootstrap-script', function () {
-  gulp.src(['./dev/js/bootstrap-script/*.js'])
-    .pipe(concat('bootstrap.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist/js'));
-});
-
 
 gulp.task('watch', function () {
   gulp.watch([styleSource + '/**/*.less'], ['style']);
@@ -76,6 +69,5 @@ gulp.task('default', [
   'browser-sync',
   'style', 
   'watch', 
-  'script', 
-  'bootstrap-script'
+  'script'
 ]);
