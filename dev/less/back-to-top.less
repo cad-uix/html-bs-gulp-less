@@ -1,0 +1,53 @@
+//
+// Back To Top
+// --------------------------------------------------
+
+.back-to-top {
+
+    position: fixed;
+
+    bottom: 0;
+
+    right: 0;
+    font-size: 2rem;
+
+@media(min-width: @screen-sm) {
+        bottom: 2rem;
+
+    right: 2rem;
+}
+
+    text-decoration: none;
+
+    color: @gray-lighter;
+
+    display: block;
+    
+    z-index: 9050;
+
+    background-color: rgba(0,0,0,0.75);
+
+    padding: 0.5rem 0.8rem;
+
+    line-height: 1;
+
+    opacity: 0;
+    
+    .transition(all 0.25s linear);
+    
+    &.show {
+    
+        opacity: 1;
+
+    }
+    
+    &:hover, &:focus {
+
+        color: white;
+
+        background-color: rgba(0,0,0,0.95);
+
+        text-decoration: none;
+
+    }
+}

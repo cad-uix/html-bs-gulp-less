@@ -1,73 +1,107 @@
-var gulp            = require('gulp');
+// Load plugins
+var gulp = require('gulp'),
+  plugins = require('gulp-load-plugins')({ camelize: true }),
+  browserSync = require('browser-sync');
 
-var concat          = require('gulp-concat');
-var uglify          = require('gulp-uglify');
-var jshint          = require('gulp-jshint');
-
-var less            = require('gulp-less');
-var csscomb         = require('gulp-csscomb');
-var minify          = require('gulp-minify-css');
-
-var notify          = require('gulp-notify');
-var browserSync     = require('browser-sync');
-var reload          = browserSync.reload;
-
-var   styleSource   = './dev/less',
-      styleDist     = './dist/css';
-
-
+// error handler for LESS
 var handleErrors = function() {
-    notify.onError({
-    title: "Compile Error",
-    message: "<%= error.message %>"
-    }).apply(this, arguments);
-    this.emit('end');
+  plugins.notify.onError({
+  title: "Compile Error",
+  message: "<%= error.message %>"
+  }).apply(this, arguments);
+  this.emit('end');
 };
 
-gulp.task('style', function () {
-  gulp.src([
-    styleSource + "/theme.less", 
-    styleSource + "/bootstrap.less"
-    ])
-    .pipe(less())
-    .on('error', handleErrors)
-    .pipe(csscomb())
-    .pipe(minify())
-    .pipe(gulp.dest(styleDist));
+// Styles LESS
+gulp.task('styles', function() {
+  return gulp.src('dev/less/styles.less')
+  .pipe(plugins.less())
+  .pipe(plugins.plumber())
+  .on( 'error', handleErrors )
+  .pipe(plugins.minifyCss())
+  .pipe(plugins.rename({ suffix: '.min' }))
+  .pipe(gulp.dest('css'))
+  .pipe(plugins.notify({ message: 'Styles task complete' }));
+});
+ 
+// Vendor Plugin Scripts
+gulp.task('plugins', function() {
+  return gulp.src(['dev/js/plugins.js', 'dev/js/vendor/*.js'])
+  .pipe(plugins.plumber())
+  .pipe(plugins.uglify())
+  .pipe(plugins.concat('plugins.js'))
+  .pipe(plugins.rename({ suffix: '.min' }))
+  .pipe(gulp.dest('js'))
+  .pipe(browserSync.reload({stream:true}));
+});
+ 
+
+// Site Scripts
+gulp.task('scripts', function() {
+  return gulp.src(['dev/js/*.js', '!dev/js/plugins.js' , 'dev/js/theme.js' ])
+  .pipe(plugins.plumber())
+  .pipe(plugins.jshint('.jshintrc'))
+  .pipe(plugins.jshint.reporter('default'))
+  .pipe(plugins.uglify())
+  .pipe(plugins.concat('scripts.js'))
+  .pipe(plugins.rename({ suffix: '.min' }))
+  .pipe(gulp.dest('js'))
+  .pipe(browserSync.reload({stream:true}))
+  .pipe(plugins.notify({ message: 'Scripts task complete' }));
+});
+ 
+// Images
+gulp.task('images', function() {
+  return gulp.src('img/**/*')
+  .pipe(plugins.plumber())
+  .pipe(plugins.cache(plugins.imagemin({ optimizationLevel: 7, progressive: true, interlaced: true })))
+  .pipe(gulp.dest('img'))
+  .pipe(browserSync.reload({stream:true}))
+  .pipe(plugins.notify({ message: 'Images task complete' }));
 });
 
-gulp.task('script', function () {
-  gulp.src(['./dev/js/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('theme.js'))
-    .pipe(gulp.dest('./dist/js'));
+// Files
+gulp.task('reload', function() {
+    browserSync.reload();
 });
+ 
 
-
-gulp.task('watch', function () {
-  gulp.watch([styleSource + '/**/*.less'], ['style']);
-  gulp.watch(['./dev/js/**/*.js'], ['script']);
-});
-
-gulp.task('browser-sync', function () {
-    var files = [
-    './dist/js/**/*.js',
-    styleDist + '/**/*.css',
-    './dist/img/**/*.{png,jpg,jpeg,gif}',
-    './**/*.html'
-    ];
-
-    browserSync.init(files, {
-    server: {
-      baseDir: "./dist"
-    }
+gulp.task('browser-sync', function() {
+    browserSync({
+        //proxy: "http://localhost/development/"
+        server: {
+            baseDir: "./"
+        }
     });
 });
 
-gulp.task('default', [
-  'browser-sync',
-  'style', 
-  'watch', 
-  'script'
-]);
+// Watch
+gulp.task('watch', function() {
+ 
+  // Watch .less files
+  gulp.watch('dev/less/**/*.less', ['styles']);
+ 
+  // Watch .js files
+  gulp.watch('dev/js/**/*.js', ['plugins', 'scripts']);
+ 
+  // Watch image files
+  gulp.watch('assets/img/**/*', ['images']);
+
+  // Watch files
+  gulp.watch('**/*.php', ['reload']);
+ 
+});
+
+// Copy dependencies from bower to distribution
+gulp.task('copy', function(){
+  gulp.src('./bower_components/bootstrap/dist/fonts/**/*.*')
+    .pipe(gulp.dest('./fonts'));
+  gulp.src('./bower_components/bootstrap/dist/js/bootstrap.min.js')
+    .pipe(gulp.dest('./dev/js/vendor'));
+});
+
+// Build task
+gulp.task('build', ['copy', 'styles', 'plugins', 'scripts', 'images']);
+
+// Default task
+gulp.task('default', [ 'copy', 'styles', 'plugins', 'scripts', 'images', 'watch', 'browser-sync']);

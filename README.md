@@ -8,23 +8,13 @@ HTML template used by cad-uix using bootstrap, less, gulp
 
 	git clone http://github.com/cad-uix/html-bs-gulp-less.git
 
-2. Install bower 
+2. run bower and npm install
 	
-	bower install
+	bower install && npm install 
 
-3. Install node_modules
-
-	npm install 
-
-4. Start gulp
+3. Start gulp
 
 	gulp
-
-5. HTML files are at the 'dist' folder.
-
-6. Save image assets at  'dist/img' folder.
-
-7. write styles using LESS found at 'dist/less' folder.
 
 ## Folder Structure
 
@@ -32,12 +22,12 @@ HTML template used by cad-uix using bootstrap, less, gulp
 	└ dev
 		└ less
 		└ js
-	└ dist
-		└ css
-		└ img
-		└ js
+		 └ vendor
+	└ css
+	└ img
+	└ js
 			└ vendor
-		└ {page files}
+	└ {page files}
 	└ gulpfile.js
 	└ package.json
 	└ bower.json
