@@ -20,7 +20,7 @@ gulp.task('styles', function() {
   .on( 'error', handleErrors )
   .pipe(plugins.minifyCss())
   .pipe(plugins.rename({ suffix: '.min' }))
-  .pipe(gulp.dest('css'))
+  .pipe(browserSync.reload({stream:true}))
   .pipe(plugins.notify({ message: 'Styles task complete' }));
 });
  
@@ -88,7 +88,7 @@ gulp.task('watch', function() {
   gulp.watch('assets/img/**/*', ['images']);
 
   // Watch files
-  gulp.watch('**/*.php', ['reload']);
+  gulp.watch('**/*.html', ['reload']);
  
 });
 
