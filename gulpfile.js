@@ -16,7 +16,7 @@ var handleErrors = function() {
 gulp.task('styles', function() {
   return gulp.src('dev/less/styles.less')
   .pipe(plugins.less())
-  .pipe(plugins.plumber())
+  //.pipe(plugins.plumber())
   .on( 'error', handleErrors )
   .pipe(plugins.minifyCss())
   .pipe(plugins.rename({ suffix: '.min' }))
